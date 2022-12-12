@@ -15,17 +15,17 @@ def main():
 
     with col1:
         line_num = st.selectbox(
-            "노선 선택", ("관악02", "5511")
+            "**노선 선택**", ("관악02", "5511")
         )
 
     with col2:
         cycle_start = st.number_input(
-            "운행회차(시작)", 1, 18, 1
+            "**운행회차(시작)**", 1, 18, 1
         )
 
     with col3:
         cycle_end = st.number_input(
-            "운행회차(끝)", 1, 18, 18
+            "**운행회차(끝)**", 1, 18, 18
         )
 
     # Prepare data
