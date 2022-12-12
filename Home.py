@@ -86,6 +86,7 @@ def display_dial(title, value, color):
 
 st.title('# 서울대학교 통행버스 이용현황')
 st.markdown('- **노선**: 관악02, 5511, 5513, 5516')
+st.markdown('- **데이터셋**: ')
 image = Image.open('img/map.gif')
 st.image(image)
 st.markdown('#### 1. 승차현황')
