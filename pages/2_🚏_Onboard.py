@@ -10,14 +10,13 @@ from Home import vehicle_onoff, vehicle_stop, display_dial
 
 
 def main(selected_data, persons_data, stop_data):
-
     # Present chart
     st.subheader("운행회차 및 정류소별 승차인원")
-    st.text(f"9/2 하루 중 선택한 범위 동안의 {line_num} 운행회차별 개별 정류소의 승차인원입니다.")
+    st.text(f"선택한 범위 내의 {line_num} 운행회차별 개별 정류소의 승차인원입니다.")
     st.altair_chart(vehicle_onoff(selected_data, 'single', '정류소순번', '인원', '누적인원'), use_container_width=True)
 
     st.subheader("운행회차에 따른 누적승차인원")
-    st.text(f"9/2 하루 중 선택한 범위 동안의 {line_num} 운행회차에 따른 누적승차인원입니다.")
+    st.text(f"선택한 범위 내의 {line_num} 운행회차에 따른 누적승차인원입니다.")
     a, b = st.columns(2)
     with a:
         display_dial("운행회차 내 누적승차인원", f"{persons_data['인원'].sum():.0f}", "#00C0F2")
@@ -26,7 +25,7 @@ def main(selected_data, persons_data, stop_data):
     st.altair_chart(vehicle_onoff(selected_data, 'cum', '정류소순번', '인원', '누적인원'), use_container_width=True)
 
     st.subheader("정류소별 누적승차인원")
-    st.text(f"9/2 하루 중 선택한 범위 동안의 {line_num} 정류소별 누적승차인원입니다.")
+    st.text(f"선택한 범위 내의 {line_num} 정류소별 누적승차인원입니다.")
     st.altair_chart(vehicle_stop(stop_data), use_container_width=True)
 
 
@@ -56,7 +55,7 @@ selected_data = selected_data[selected_data["운행회차"] >= cycle_start]
 selected_data = selected_data[selected_data["운행회차"] <= cycle_end]
 
 f1 = {'인원' : 'sum'}
-g1 = veh_onb.groupby(['운행회차'])
+g1 = selected_data.groupby(['운행회차'])
 v1 = g1.agg(f1)
 persons_data = pd.concat([v1], 1)
 persons_data = persons_data.reset_index()  
@@ -65,7 +64,7 @@ f2 = {'인원' : 'sum'}
 g2 = selected_data.groupby(['정류소번호명'])
 v2 = g2.agg(f2)
 stop_data = pd.concat([v2], 1)
-stop_data = stop_data.sort_values('정류소번호명')
+stop_data = stop_data.sort_values(['정류소번호명'])
 stop_data = stop_data.reset_index()
 
 # Body

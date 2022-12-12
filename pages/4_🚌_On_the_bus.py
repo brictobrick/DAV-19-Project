@@ -12,11 +12,11 @@ from Home import vehicle_onoff, vehicle_stop, display_dial
 def main(selected_data, stop_data):
     # Present chart
     st.subheader("운행회차별 재차인원")
-    st.text(f"9/2 하루 중 선택한 범위 동안의 {line_num} 운행회차별 개별 정류소의 재차인원입니다.")
+    st.text(f"선택한 범위 내의 {line_num} 운행회차별 개별 정류소의 재차인원입니다.")
     st.altair_chart(vehicle_onoff(selected_data, 'single', '정류소순번', '인원', '누적인원'), use_container_width=True)
 
     st.subheader("정류소별 평균재차인원")
-    st.text(f"9/2 하루 중 선택한 범위 동안의 {line_num} 정류소별 평균재차인원입니다.")
+    st.text(f"선택한 범위 내의 {line_num} 정류소별 평균재차인원입니다.")
     st.altair_chart(vehicle_stop(stop_data), use_container_width=True)
 
 # Set control box
