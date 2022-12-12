@@ -5,6 +5,7 @@ import streamlit as st
 import altair as alt
 from htbuilder import div, big, h2, styles
 from htbuilder.units import rem
+from PIL import Image
 
 def vehicle_onoff(source, count_type, x, y, z):
     hover = alt.selection_single(
@@ -82,7 +83,11 @@ def display_dial(title, value, color):
 
     return dials
 
+
 st.title('# 서울대학교 통행버스 이용현황')
+st.markdown('- **노선**: 관악02, 5511, 5513, 5516')
+image = Image.open('img/map.gif')
+st.image(image)
 st.markdown('#### 1. 승차현황')
 st.markdown('- 운행회차별 승차인원')
 st.markdown('- 운행회차에 따른 누적승차인원')
