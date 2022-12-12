@@ -109,8 +109,8 @@ def stn_anot(fig, stns, legend_group, x_offset=0, y_offset=0, color="#000000"):
             showlegend=False,
             text=["<b>" + s +"</b>" for s in stns],
             textfont=dict(
-                family="Courier New, monospace",
-                size=9,
+                family="dotum",
+                size=11,
                 color=color,
                 ),
             textposition="middle center",
