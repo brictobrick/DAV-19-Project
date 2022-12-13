@@ -85,7 +85,7 @@ def display_dial(title, value, color):
 
 
 st.title('# 서울대학교 통행버스 이용현황')
-st.markdown('- **데이터셋**: 1일 동안의 교통카드 트랜잭션 데이터 (노선별, 정류장별)')
+st.markdown('- **데이터셋**: 하루 동안의 교통카드 트랜잭션 데이터 (노선별, 정류장별)')
 st.markdown('- **버스노선**: 관악02, 5511, 5513, 5516 ([노선도](https://me.snu.ac.kr/ko/location_bus))')
 image = Image.open('img/map.gif')
 st.image(image)

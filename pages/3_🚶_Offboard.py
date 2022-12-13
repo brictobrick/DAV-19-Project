@@ -25,7 +25,7 @@ def main(selected_data, persons_data, stop_data):
     st.altair_chart(vehicle_onoff(selected_data, 'cum', '정류소순번', '인원', '누적인원'), use_container_width=True)
 
     st.subheader("정류소별 누적하차인원")
-    st.text(f"선택한 범위 내의 {line_num} 정류소별 누적인원입니다.")
+    st.text(f"선택한 범위 내의 {line_num} 정류소별 누적하차인원입니다.")
     st.altair_chart(vehicle_stop(stop_data), use_container_width=True)
 
 
@@ -37,15 +37,27 @@ with col1:
         "**노선 선택**", ("관악02", "5511")
     )
 
-with col2:
-    cycle_start = st.number_input(
-        "**운행회차(시작)**", 1, 18, 1
-    )
+if (line_num == "관악02"):
+    with col2:
+        cycle_start = st.number_input(
+            "**운행회차(시작)**", 1, 18, 1
+        )
+else:
+    with col2:
+        cycle_start = st.number_input(
+            "**운행회차(시작)**", 1, 10, 1
+        )    
 
-with col3:
-    cycle_end = st.number_input(
-        "**운행회차(끝)**", 1, 18, 18
-    )
+if (line_num == "관악02"):
+    with col3:
+        cycle_end = st.number_input(
+            "**운행회차(끝)**", 1, 18, 18
+        )
+else:
+    with col3:
+        cycle_end = st.number_input(
+            "**운행회차(끝)**", 1, 10, 10
+        )    
 
 # Prepare data
 veh_onb = pd.read_csv('dataset/veh_offboard.csv', encoding='cp949')

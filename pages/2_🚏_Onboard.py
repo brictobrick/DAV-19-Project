@@ -37,15 +37,27 @@ with col1:
         "**노선 선택**", ("관악02", "5511")
     )
 
-with col2:
-    cycle_start = st.number_input(
-        "**운행회차(시작)**", 1, 18, 1
-    )
+if (line_num == "관악02"):
+    with col2:
+        cycle_start = st.number_input(
+            "**운행회차(시작)**", 1, 18, 1
+        )
+else:
+    with col2:
+        cycle_start = st.number_input(
+            "**운행회차(시작)**", 1, 10, 1
+        )    
 
-with col3:
-    cycle_end = st.number_input(
-        "**운행회차(끝)**", 1, 18, 18
-    )
+if (line_num == "관악02"):
+    with col3:
+        cycle_end = st.number_input(
+            "**운행회차(끝)**", 1, 18, 18
+        )
+else:
+    with col3:
+        cycle_end = st.number_input(
+            "**운행회차(끝)**", 1, 10, 10
+        )    
 
 # Prepare data
 veh_onb = pd.read_csv('dataset/veh_onboard.csv', encoding='cp949')

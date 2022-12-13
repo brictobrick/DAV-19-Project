@@ -10,7 +10,7 @@ from datetime import datetime
 
 st.title('# 차량별 혼잡도')
 st.subheader("버스노선별 이용현황")
-
+st.text("시간대별 관악02, 5511, 5513, 5516 차량의 위치와 혼잡도 현황입니다.")
 
 def scale(l1, l2):
     def cal(x):
@@ -90,9 +90,9 @@ edge_traces[3].line = dict(width=1, dash="dash")
 
 fig = go.Figure(data=edge_traces,
             layout=go.Layout(
-                title="관악02, 5511, 5513, 5516 노선별 현황",
-                title_x=0.45,
-                titlefont=dict(size=15),
+                # title="관악02, 5511, 5513, 5516 노선별 현황",
+                # title_x=0.45,
+                # titlefont=dict(size=15),
                 showlegend=True,
                 hovermode='closest',
                 margin=dict(b=20,l=5,r=5,t=40),
